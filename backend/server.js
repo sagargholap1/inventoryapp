@@ -4,8 +4,19 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+
 const app = express();
 dotenv.config()
+
+//Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended:false }));
+app.use(bodyParser.json());
+
+//Routes
+app.get('/', (req,res) => {
+    res.send("Home Page");
+})
 
 const PORT = process.env.PORT || 5000;
 
